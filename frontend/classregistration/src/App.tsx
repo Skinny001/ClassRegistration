@@ -14,7 +14,7 @@ const contractAddress = "0xb33A94Bf2c58AA7cAdA03c219860ecDf7DaeD299"
 
 export default function App() {
   const [provider, setProvider] = useState<ethers.BrowserProvider | null>(null)
-  const [signer, setSigner] = useState<ethers.Signer | null>(null)
+  // const [ setSigner] = useState<ethers.Signer | null>(null)
   const [contract, setContract] = useState<ethers.Contract | null>(null)
   const [account, setAccount] = useState<string | null>(null)
   const [isConnected, setIsConnected] = useState(false)
@@ -44,7 +44,7 @@ export default function App() {
     try {
       const accounts = await window.ethereum.request({ method: "eth_requestAccounts" })
       const _signer = await provider.getSigner()
-      setSigner(_signer)
+      // setSigner(_signer)
       setAccount(accounts[0])
 
       const _contract = new ethers.Contract(contractAddress, abi.abi, _signer)
