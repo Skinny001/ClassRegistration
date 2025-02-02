@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-const contractAddress = "0xb33A94Bf2c58AA7cAdA03c219860ecDf7DaeD299"
+const contractAddress = " 0x7F226AA1913daD6F319beDcf619F95d1F1c18A5b"
 
 export default function App() {
   const [provider, setProvider] = useState<ethers.BrowserProvider | null>(null)

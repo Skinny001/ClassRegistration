@@ -39,7 +39,7 @@ contract ClassRegistration {
     }
 
     function getStudentById(uint256 rollNumber) public view returns (Student memory) {
-        require(students[rollNumber].rollNumber != 0, "Student not registered");
+        require(students[rollNumber].rollDate != 0, "Student not registered");
         return students[rollNumber];
     }
 
