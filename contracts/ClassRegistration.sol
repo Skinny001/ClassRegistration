@@ -20,20 +20,16 @@ contract ClassRegistration {
         _;
     }
 
-    modifier isNotZero(uint256 _ID) {
-        require(_ID != 0, "Roll number must be greater than 0");
-        _;
-    }
+    // modifier isNotZero(uint256 _ID) {
+    //     require(_ID != 0, "Roll number must be greater than 0");
+    //     _;
+    // }
 
     event StudentRegistered(string name, uint256 rollNumber, uint256 rollDate);
     event StudentRemoved(uint256 rollNumber);
 
-    function registerStudent(string memory studentName, uint256 rollNumber)
-        public
-        onlyAdmin
-        isNotZero(rollNumber)
-    {
-        require(students[rollNumber].rollNumber == 0, "Student already registered");
+    function registerStudent(string memory studentName, uint256 rollNumber) public onlyAdmin {
+        require(students[rollNumber].rollDate == 0, "Student already registered");
         students[rollNumber] = Student({
             name: studentName,
             rollNumber: rollNumber,
@@ -48,7 +44,7 @@ contract ClassRegistration {
     }
 
     function removeStudent(uint256 rollNumber) public onlyAdmin {
-        require(students[rollNumber].rollNumber != 0, "Student not registered");
+        require(students[rollNumber].rollDate != 0, "Student not registered");
         students[rollNumber] = Student("", 0, 0);
         emit StudentRemoved(rollNumber);
     }
